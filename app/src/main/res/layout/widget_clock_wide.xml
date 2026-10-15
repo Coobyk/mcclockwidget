@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wide widgets: the dial sits beside the digits. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mc_panel"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/clock_dial"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:contentDescription="@string/widget_dial_description"
+        android:scaleType="fitCenter"
+        android:src="@drawable/clock_00" />
+
+    <TextView
+        android:id="@+id/clock_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:autoSizeMaxTextSize="34sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/silkscreen_bold"
+        android:gravity="center"
+        android:maxLines="1"
+        android:shadowColor="@color/mc_text_shadow"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="0"
+        android:text="@string/widget_time_placeholder"
+        android:textColor="@color/mc_text" />
+
+</LinearLayout>

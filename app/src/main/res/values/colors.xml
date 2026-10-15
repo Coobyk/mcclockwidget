@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Minecraft GUI greys: the classic raised panel. -->
+    <color name="mc_panel_fill">#C6C6C6</color>
+    <color name="mc_panel_light">#FFFFFF</color>
+    <color name="mc_panel_dark">#555555</color>
+
+    <color name="mc_button_fill">#8B8B8B</color>
+    <color name="mc_button_fill_pressed">#6E6E6E</color>
+
+    <color name="mc_text">#3F3F3F</color>
+    <color name="mc_text_shadow">#59000000</color>
+
+    <color name="app_bg_dark">#1E1E1E</color>
+    <color name="app_text">#F2F2F2</color>
+    <color name="app_text_dim">#A9A9A9</color>
+
+    <color name="ic_launcher_background">#2563EB</color>
+</resources>

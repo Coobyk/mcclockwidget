@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Minecraft button: raised when idle, bevel inverted while pressed. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Pressed: dark top-left, bright bottom-right. -->
+    <item android:state_pressed="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/mc_panel_dark" />
+                </shape>
+            </item>
+            <item
+                android:bottom="0dp"
+                android:left="2dp"
+                android:right="0dp"
+                android:top="2dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/mc_panel_light" />
+                </shape>
+            </item>
+            <item
+                android:bottom="2dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="2dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/mc_button_fill_pressed" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <!-- Idle: raised. -->
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/mc_panel_light" />
+                </shape>
+            </item>
+            <item
+                android:bottom="0dp"
+                android:left="2dp"
+                android:right="0dp"
+                android:top="2dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/mc_panel_dark" />
+                </shape>
+            </item>
+            <item
+                android:bottom="2dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="2dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/mc_button_fill" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

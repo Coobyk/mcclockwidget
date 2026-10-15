@@ -1,0 +1,20 @@
+# Gradle / Android
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+.kotlin/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# OS
+.DS_Store
+
+# Local build outputs pulled back from the sandbox
+app/build/outputs/
+
+# Built APKs pulled back from the sandbox
+dist/

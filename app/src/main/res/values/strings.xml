@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minecraft Clock</string>
+    <string name="app_tagline">Minecraft\'s clock item, on your home screen.</string>
+
+    <string name="widget_label">Minecraft Clock</string>
+    <string name="widget_description">The time on Minecraft\'s clock item, with a digital readout.</string>
+    <string name="widget_a11y">Minecraft clock: %1$s, %2$s</string>
+    <string name="widget_dial_description">Minecraft clock dial</string>
+    <string name="widget_time_placeholder">12:00</string>
+
+    <string name="add_widget">Add to home screen</string>
+    <string name="pin_unsupported">This launcher can\'t add widgets from an app. Long-press your home screen and pick Minecraft Clock from the widgets list.</string>
+
+    <string name="label_local">Local time</string>
+    <string name="label_minecraft">Minecraft time</string>
+    <string name="label_ticks">Minecraft day time</string>
+    <string name="label_frame">Dial frame</string>
+    <string name="label_phase">Sky</string>
+
+    <string name="frame_value">%1$d / 63</string>
+
+    <plurals name="ticks_value">
+        <item quantity="one">%1$d tick</item>
+        <item quantity="other">%1$d ticks</item>
+    </plurals>
+
+    <string name="about">The dial is Minecraft\'s clock item: 64 frames, chosen from the world time with the same maths the game uses. Sunrise (tick 0) lines up with 06:00 on this device, so the sun sits at the top of the dial at noon and the moon at midnight.</string>
+</resources>

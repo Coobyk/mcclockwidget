@@ -1,39 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Square and tall widgets: the dial sits above the digits. -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+  The widget is the dial and nothing else: no panel behind it, no digital readout. Leaving both out
+  lets the clock item grow to whatever size the widget has been dragged to. The time is still
+  announced to screen readers through the content description — see ClockWidgetProvider.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/widget_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/mc_panel"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/clock_dial"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/widget_dial_description"
+        android:layout_height="match_parent"
         android:scaleType="fitCenter"
         android:src="@drawable/clock_00" />
 
-    <TextView
-        android:id="@+id/clock_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:autoSizeMaxTextSize="24sp"
-        android:autoSizeMinTextSize="10sp"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="@font/silkscreen_bold"
-        android:gravity="center"
-        android:maxLines="1"
-        android:shadowColor="@color/mc_text_shadow"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="0"
-        android:text="@string/widget_time_placeholder"
-        android:textColor="@color/mc_text" />
-
-</LinearLayout>
+</FrameLayout>

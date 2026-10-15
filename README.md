@@ -3,21 +3,19 @@
 # MCClockWidget
 
 An Android app whose home screen widget shows the time on **Minecraft's clock item** — the real
-64-frame dial from the game, plus a digital readout in a pixel font.
+64-frame dial from the game, as large as the widget allows.
 
 Created in [T3 Code](https://t3.codes).
 
 ## What the widget shows
 
-* The clock dial, using `clock_00.png` … `clock_63.png`.
-* The current time as digits (`14:32`, or `6:12` on 12-hour devices). The widget leaves the
-  meridiem off — it would halve the size of the digits, and the dial already says whether it is
-  day or night. The app screen, which has room, adds it.
-* A wide layout (dial beside the digits) and a square layout (dial above them), picked
-  automatically on resize.
+* The clock dial, using `clock_00.png` … `clock_63.png` — and nothing else. No panel behind it and
+  no digital readout, so the clock item fills the whole widget and grows with it as you resize.
+* The time is still available to screen readers: it lives in the content description rather than on
+  screen. Tap the widget to open the app.
 
-Tap the widget to open the app, which shows a large live clock plus the local time, the Minecraft
-world time, the day time in ticks, the dial frame and the sky phase.
+The app screen keeps the trimmings the widget drops: a large live dial, the local time, the
+Minecraft world time, the day time in ticks, the dial frame and the sky phase.
 
 ## How the dial is chosen
 
@@ -53,7 +51,7 @@ app/src/main/java/com/t3codes/mcclock/
   MainActivity.kt           the app screen
   widget/ClockWidgetProvider.kt   the widget
   widget/WidgetScheduler.kt       the once-a-minute wake-up
-app/src/main/assets/clocks/        original 16x16 frames (used by the app screen)
+app/src/main/assets/clocks/        original frames (used by the app screen)
 app/src/main/res/drawable-nodpi/   the same frames at 10x, for the widget's ImageView
 ```
 
@@ -81,8 +79,8 @@ adb install dist/mcclockwidget-1.0-debug.apk
 ```
 
 Then long-press the home screen, choose *Widgets*, and pick **Minecraft Clock** — or open the app
-and tap *Add to home screen*. The widget is resizable from 1x1 upwards; at 1x1 it shows the dial
-with compact digits, and it switches to a wide layout once it is wider than it is tall.
+and tap *Add to home screen*. The widget is resizable from 1x1 upwards, and the dial scales to fill
+whatever size you give it.
 
 ## Credits
 

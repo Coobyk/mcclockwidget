@@ -4,10 +4,9 @@
     <string name="app_tagline">Minecraft\'s clock item, on your home screen.</string>
 
     <string name="widget_label">Minecraft Clock</string>
-    <string name="widget_description">The time on Minecraft\'s clock item, with a digital readout.</string>
+    <string name="widget_description">The time on Minecraft\'s clock item.</string>
     <string name="widget_a11y">Minecraft clock: %1$s, %2$s</string>
     <string name="widget_dial_description">Minecraft clock dial</string>
-    <string name="widget_time_placeholder">12:00</string>
 
     <string name="add_widget">Add to home screen</string>
     <string name="pin_unsupported">This launcher can\'t add widgets from an app. Long-press your home screen and pick Minecraft Clock from the widgets list.</string>

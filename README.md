@@ -104,7 +104,8 @@ Re-running the workflow from the *Actions* tab with the tag as its input replace
 existing release rather than failing.
 
 `.github/workflows/ci.yml` runs on every push to `master` and every pull request: unit tests, lint
-and a debug APK.
+and a debug APK. It also uploads the debug APK and the PNGs `WidgetRenderTest` drew, so the rendered
+widget can be looked at without building anything locally.
 
 ### The signing key
 
@@ -125,6 +126,7 @@ release can be installed over an existing one. Without those four environment va
 
 ## Credits
 
-* Clock textures: the 64 frames from Minecraft's `clock` item.
+* Clock textures: the 64 frames from Minecraft's `clock` item, which are Mojang's assets, included
+  here as they come out of the game. This project is not affiliated with Mojang or Microsoft.
 * UI pixel font: [Silkscreen](https://github.com/googlefonts/silkscreen) by Jason Kottke,
   SIL Open Font License 1.1 — see `third_party/silkscreen/OFL.txt`.

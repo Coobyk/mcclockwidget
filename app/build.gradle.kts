@@ -76,6 +76,14 @@ android {
     }
 }
 
+// WidgetRenderTest writes what it drew to build/widget-renders so a run can be eyeballed afterwards,
+// and CI uploads that directory. Declaring it as a task output means the Gradle build cache restores
+// the PNGs on a cache hit; left undeclared they simply do not exist whenever the test task is not
+// actually executed, which is how the upload step came to fail on an otherwise green build.
+tasks.withType<Test>().configureEach {
+    outputs.dir(layout.buildDirectory.dir("widget-renders"))
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

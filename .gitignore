@@ -18,3 +18,8 @@ app/build/outputs/
 
 # Built APKs pulled back from the sandbox
 dist/
+
+# Release signing material. Never commit this; CI gets it from repository secrets.
+keys/
+*.jks
+*.keystore

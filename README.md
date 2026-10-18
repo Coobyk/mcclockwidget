@@ -74,13 +74,53 @@ showing up on a phone.
 
 ## Installing
 
+Download the APK from the [latest
+release](https://github.com/Coobyk/mcclockwidget/releases/latest):
+
 ```sh
-adb install dist/mcclockwidget-1.0-debug.apk
+adb install mcclockwidget-1.0.0.apk
 ```
+
+Or build one yourself with `./gradlew :app:assembleDebug` and install
+`app/build/outputs/apk/debug/app-debug.apk`.
 
 Then long-press the home screen, choose *Widgets*, and pick **Minecraft Clock** — or open the app
 and tap *Add to home screen*. The widget is resizable from 1x1 upwards, and the dial scales to fill
 whatever size you give it.
+
+## Releasing
+
+Pushing a tag that looks like `v1.2.3` runs `.github/workflows/release.yml`, which runs the tests,
+builds a signed release APK and attaches it to a GitHub Release named after the tag:
+
+```sh
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+`versionName` comes from the tag and `versionCode` from the workflow run number, so every release
+installs over the last one. Re-running the workflow from the *Actions* tab with the tag as its input
+replaces the APK on an existing release rather than failing.
+
+`.github/workflows/ci.yml` runs on every push to `master` and every pull request: unit tests, lint
+and a debug APK.
+
+### The signing key
+
+Release builds are signed with `keys/mcclock-release.jks`, which is not in the repo. The same key is
+stored in the repository's Actions secrets:
+
+| Secret | |
+| --- | --- |
+| `MCCLOCK_KEYSTORE_BASE64` | the keystore, base64-encoded |
+| `MCCLOCK_KEYSTORE_PASSWORD` | the store password |
+| `MCCLOCK_KEY_ALIAS` | `mcclock` |
+| `MCCLOCK_KEY_PASSWORD` | the key password |
+
+**Keep a copy of `keys/` somewhere safe.** The key cannot be recreated, and losing it means no future
+release can be installed over an existing one. Without those four environment variables
+`./gradlew :app:assembleRelease` still builds — it just leaves the APK unsigned, as
+`app-release-unsigned.apk`.
 
 ## Credits
 

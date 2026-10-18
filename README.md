@@ -98,9 +98,10 @@ git tag v1.0.0
 git push origin v1.0.0
 ```
 
-`versionName` comes from the tag and `versionCode` from the workflow run number, so every release
-installs over the last one. Re-running the workflow from the *Actions* tab with the tag as its input
-replaces the APK on an existing release rather than failing.
+`versionName` is the tag without its `v`, and `versionCode` is derived from it — `1.2.3` becomes
+`10203` — so every release installs over the last one and rebuilding a tag names the same version.
+Re-running the workflow from the *Actions* tab with the tag as its input replaces the APK on an
+existing release rather than failing.
 
 `.github/workflows/ci.yml` runs on every push to `master` and every pull request: unit tests, lint
 and a debug APK.

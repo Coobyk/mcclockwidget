@@ -44,8 +44,20 @@ jobs:
         id: version
         run: |
           tag="${{ inputs.tag || github.ref_name }}"
+          if [ -z "$tag" ]; then
+            echo "::error::No tag to build. Push a v* tag, or pass one to workflow_dispatch."
+            exit 1
+          fi
+          name="${tag#v}"
+          # versionCode has to only ever go up for an install to replace the last one, so derive it
+          # from the tag rather than from the build: 1.2.3 becomes 10203 every time.
+          IFS='.' read -r major minor patch <<< "$name"
+          major="${major//[!0-9]/}"; major="${major:-0}"
+          minor="${minor//[!0-9]/}"; minor="${minor:-0}"
+          patch="${patch//[!0-9]/}"; patch="${patch:-0}"
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
-          echo "name=${tag#v}" >> "$GITHUB_OUTPUT"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "code=$(( major * 10000 + minor * 100 + patch ))" >> "$GITHUB_OUTPUT"
 
       - name: Decode the release signing key
         env:
@@ -69,7 +81,7 @@ jobs:
         run: |
           ./gradlew --no-daemon :app:assembleRelease \
             -PversionName="${{ steps.version.outputs.name }}" \
-            -PversionCode="${{ github.run_number }}"
+            -PversionCode="${{ steps.version.outputs.code }}"
 
       - name: Check the APK really is signed with the release key
         run: |

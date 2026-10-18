@@ -106,4 +106,21 @@ jobs:
               --title "Minecraft Clock $VERSION" \
               --generate-notes
           fi
-          gh release view "$TAG"
+
+          # A release can exist and still be invisible: deleting and re-pushing a tag turns its
+          # release back into a draft, and `gh` reads drafts happily, so "the release is there"
+          # proves nothing to anyone who is not logged in. Undraft if needed, then fetch the exact
+          # URL a visitor would use, with no credentials at all.
+          if [ "$(gh release view "$TAG" --json isDraft -q .isDraft)" = "true" ]; then
+            echo "::warning::Release $TAG was a draft; publishing it."
+            gh release edit "$TAG" --draft=false
+          fi
+          gh release view "$TAG" --json url,isDraft,isPrerelease,assets
+
+          url="https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/$(basename "$apk")"
+          code=$(curl -sL -o /dev/null -w '%{http_code}' "$url")
+          if [ "$code" != "200" ]; then
+            echo "::error::$url needs a login (HTTP $code). The release is probably still a draft."
+            exit 1
+          fi
+          echo "Confirmed: $url downloads without a login."

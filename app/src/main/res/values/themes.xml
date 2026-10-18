@@ -2,12 +2,12 @@
 <resources>
 
     <style name="Theme.MCClock" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/bg_stone</item>
-        <item name="android:statusBarColor">@color/app_bg_dark</item>
-        <item name="android:navigationBarColor">@color/app_bg_dark</item>
-        <item name="colorPrimary">@color/mc_panel_fill</item>
-        <item name="colorPrimaryDark">@color/mc_panel_dark</item>
-        <item name="colorAccent">#7FB238</item>
+        <item name="android:windowBackground">@color/app_bg</item>
+        <item name="android:statusBarColor">@color/app_bg</item>
+        <item name="android:navigationBarColor">@color/app_bg</item>
+        <item name="colorPrimary">@color/mc_green</item>
+        <item name="colorPrimaryDark">@color/mc_green_dark</item>
+        <item name="colorAccent">@color/mc_green</item>
     </style>
 
     <!-- Rows in the "about" panel on the app screen. -->
@@ -15,16 +15,16 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textColor">@color/mc_text</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/app_text_secondary</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <style name="RowValue">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/silkscreen_bold</item>
-        <item name="android:textColor">@color/mc_text</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/app_text</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
 </resources>

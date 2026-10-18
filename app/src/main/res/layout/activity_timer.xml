@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_stone"
+    android:background="@color/app_bg"
     android:fillViewport="true">
 
     <LinearLayout
@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="24dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,13 +22,13 @@
             android:shadowRadius="0"
             android:text="Timer"
             android:textColor="@color/app_text"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/remainingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/silkscreen_bold"
             android:shadowColor="#CC000000"
             android:shadowDx="3"
@@ -36,13 +36,13 @@
             android:shadowRadius="0"
             android:text="00:00:00"
             android:textColor="@color/app_text"
-            android:textSize="48sp" />
+            android:textSize="52sp" />
 
         <LinearLayout
             android:id="@+id/inputRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:orientation="horizontal">
 
             <EditText
@@ -50,9 +50,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/mc_button_secondary"
                 android:gravity="center"
                 android:hint="h"
                 android:inputType="number"
+                android:padding="12dp"
                 android:text="0"
                 android:textColor="@color/app_text"
                 android:textColorHint="@color/app_text_dim" />
@@ -61,10 +63,13 @@
                 android:id="@+id/minutesEdit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
+                android:background="@drawable/mc_button_secondary"
                 android:gravity="center"
                 android:hint="m"
                 android:inputType="number"
+                android:padding="12dp"
                 android:text="5"
                 android:textColor="@color/app_text"
                 android:textColorHint="@color/app_text_dim" />
@@ -73,10 +78,13 @@
                 android:id="@+id/secondsEdit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
+                android:background="@drawable/mc_button_secondary"
                 android:gravity="center"
                 android:hint="s"
                 android:inputType="number"
+                android:padding="12dp"
                 android:text="0"
                 android:textColor="@color/app_text"
                 android:textColorHint="@color/app_text_dim" />
@@ -85,7 +93,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:orientation="horizontal">
 
             <TextView
@@ -94,14 +102,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
-                android:background="@drawable/mc_button"
+                android:background="@drawable/mc_button_primary"
                 android:clickable="true"
                 android:focusable="true"
                 android:fontFamily="@font/silkscreen_bold"
                 android:gravity="center"
                 android:padding="14dp"
                 android:text="Start"
-                android:textColor="@color/mc_text"
+                android:textColor="@color/app_text"
                 android:textSize="13sp" />
 
             <TextView
@@ -111,14 +119,14 @@
                 android:layout_marginStart="6dp"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
-                android:background="@drawable/mc_button"
+                android:background="@drawable/mc_button_secondary"
                 android:clickable="true"
                 android:focusable="true"
                 android:fontFamily="@font/silkscreen_bold"
                 android:gravity="center"
                 android:padding="14dp"
                 android:text="Pause"
-                android:textColor="@color/mc_text"
+                android:textColor="@color/app_text"
                 android:textSize="13sp" />
 
             <TextView
@@ -127,14 +135,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_weight="1"
-                android:background="@drawable/mc_button"
+                android:background="@drawable/mc_button_secondary"
                 android:clickable="true"
                 android:focusable="true"
                 android:fontFamily="@font/silkscreen_bold"
                 android:gravity="center"
                 android:padding="14dp"
                 android:text="Reset"
-                android:textColor="@color/mc_text"
+                android:textColor="@color/app_text"
                 android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>

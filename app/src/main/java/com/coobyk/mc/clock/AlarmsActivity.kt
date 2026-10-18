@@ -72,10 +72,10 @@ class AlarmsActivity : AppCompatActivity() {
     private fun makeRow(alarm: Alarm): View {
         val panel = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
-            background = getDrawable(R.drawable.mc_panel)
-            setPadding(14, 12, 14, 12)
+            background = getDrawable(R.drawable.mc_card)
+            setPadding(16, 14, 16, 14)
             val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-            lp.bottomMargin = 8
+            lp.bottomMargin = 10
             layoutParams = lp
         }
         val left = LinearLayout(this).apply {
@@ -84,7 +84,7 @@ class AlarmsActivity : AppCompatActivity() {
         }
         val timeTv = TextView(this).apply {
             text = alarm.timeText()
-            setTextColor(getColor(R.color.mc_text))
+            setTextColor(getColor(R.color.app_text))
             textSize = 22f
             typeface = resources.getFont(R.font.silkscreen_bold)
         }
@@ -108,7 +108,7 @@ class AlarmsActivity : AppCompatActivity() {
         }
         val deleteBtn = TextView(this).apply {
             text = "✕"
-            setTextColor(getColor(R.color.mc_text))
+            setTextColor(getColor(R.color.app_text))
             textSize = 16f
             setPadding(12, 0, 0, 0)
             setOnClickListener {

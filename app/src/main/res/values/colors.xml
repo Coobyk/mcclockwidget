@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Minecraft GUI greys: the classic raised panel. -->
+    <!-- Minecraft greens. -->
+    <color name="mc_green">#7FB238</color>
+    <color name="mc_green_dark">#5B8731</color>
+    <color name="mc_green_pressed">#4A7028</color>
+
+    <!-- Legacy Minecraft GUI greys, kept for the dial's panel feel. -->
     <color name="mc_panel_fill">#C6C6C6</color>
     <color name="mc_panel_light">#FFFFFF</color>
     <color name="mc_panel_dark">#555555</color>
-
     <color name="mc_button_fill">#8B8B8B</color>
     <color name="mc_button_fill_pressed">#6E6E6E</color>
-
     <color name="mc_text">#3F3F3F</color>
     <color name="mc_text_shadow">#59000000</color>
 
-    <color name="app_bg_dark">#1E1E1E</color>
+    <!-- App chrome: dark surfaces. -->
+    <color name="app_bg">#141414</color>
+    <color name="app_bg_elev">#1F1F1F</color>
+    <color name="app_surface">#262626</color>
+    <color name="app_surface_light">#333333</color>
+    <color name="app_border">#3A3A3A</color>
     <color name="app_text">#F2F2F2</color>
-    <color name="app_text_dim">#A9A9A9</color>
+    <color name="app_text_secondary">#B8B8B8</color>
+    <color name="app_text_dim">#7A7A7A</color>
 
     <color name="ic_launcher_background">#2563EB</color>
 </resources>

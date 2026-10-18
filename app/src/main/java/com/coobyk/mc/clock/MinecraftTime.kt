@@ -1,4 +1,4 @@
-package com.t3codes.mcclock
+package com.coobyk.mc.clock
 
 import java.time.LocalDateTime
 import java.util.Locale

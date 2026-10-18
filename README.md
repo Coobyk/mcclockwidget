@@ -38,12 +38,12 @@ real sun dial:
 | 00:00 | 32 | moon at the top |
 
 The app is deliberately deterministic here, so the mapping is covered by unit tests — see
-`app/src/test/java/com/t3codes/mcclock/MinecraftTimeTest.kt`.
+`app/src/test/java/com/coobyk/mc/clock/MinecraftTimeTest.kt`.
 
 ## Project layout
 
 ```
-app/src/main/java/com/t3codes/mcclock/
+app/src/main/java/com/coobyk/mc/clock/
   MinecraftTime.kt          the vanilla clock maths
   ClockArt.kt               the 64 frames and their resource names
   DialRenderer.kt           nearest-neighbour drawing, snapped to whole source pixels

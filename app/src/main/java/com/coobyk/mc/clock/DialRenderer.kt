@@ -1,4 +1,4 @@
-package com.t3codes.mcclock
+package com.coobyk.mc.clock
 
 import android.content.Context
 import android.graphics.Bitmap

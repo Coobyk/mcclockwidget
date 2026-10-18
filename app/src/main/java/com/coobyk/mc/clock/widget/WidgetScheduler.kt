@@ -1,4 +1,4 @@
-package com.t3codes.mcclock.widget
+package com.coobyk.mc.clock.widget
 
 import android.app.AlarmManager
 import android.app.PendingIntent

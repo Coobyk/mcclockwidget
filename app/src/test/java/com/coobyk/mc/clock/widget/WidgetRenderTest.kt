@@ -1,4 +1,4 @@
-package com.t3codes.mcclock.widget
+package com.coobyk.mc.clock.widget
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.test.core.app.ApplicationProvider
-import com.t3codes.mcclock.R
+import com.coobyk.mc.clock.R
 import java.io.File
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull

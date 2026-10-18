@@ -17,11 +17,11 @@ val keystoreAlias: String? = System.getenv("MCCLOCK_KEY_ALIAS")
 val keystoreKeyPassword: String? = System.getenv("MCCLOCK_KEY_PASSWORD")
 
 android {
-    namespace = "com.t3codes.mcclock"
+    namespace = "com.coobyk.mc.clock"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.t3codes.mcclock"
+        applicationId = "com.coobyk.mc.clock"
         minSdk = 26
         targetSdk = 35
         versionCode = appVersionCode

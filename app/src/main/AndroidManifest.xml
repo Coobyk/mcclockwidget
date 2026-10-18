@@ -36,7 +36,7 @@
                 <action android:name="android.intent.action.DATE_CHANGED" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-                <action android:name="com.t3codes.mcclock.action.TICK" />
+                <action android:name="com.coobyk.mc.clock.action.TICK" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"

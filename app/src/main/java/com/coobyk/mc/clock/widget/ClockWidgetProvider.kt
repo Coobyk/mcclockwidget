@@ -1,4 +1,4 @@
-package com.t3codes.mcclock.widget
+package com.coobyk.mc.clock.widget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -9,10 +9,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.widget.RemoteViews
-import com.t3codes.mcclock.ClockArt
-import com.t3codes.mcclock.MainActivity
-import com.t3codes.mcclock.MinecraftTime
-import com.t3codes.mcclock.R
+import com.coobyk.mc.clock.ClockArt
+import com.coobyk.mc.clock.MainActivity
+import com.coobyk.mc.clock.MinecraftTime
+import com.coobyk.mc.clock.R
 import java.time.LocalDateTime
 import java.util.Locale
 
@@ -65,7 +65,7 @@ class ClockWidgetProvider : AppWidgetProvider() {
 
     companion object {
 
-        const val ACTION_TICK = "com.t3codes.mcclock.action.TICK"
+        const val ACTION_TICK = "com.coobyk.mc.clock.action.TICK"
 
         fun refreshAll(context: Context) {
             val manager = AppWidgetManager.getInstance(context) ?: return

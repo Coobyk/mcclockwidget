@@ -40,7 +40,7 @@
             android:orientation="vertical"
             android:padding="14dp">
 
-            <com.t3codes.mcclock.ClockView
+            <com.coobyk.mc.clock.ClockView
                 android:id="@+id/clockView"
                 android:layout_width="match_parent"
                 android:layout_height="168dp" />

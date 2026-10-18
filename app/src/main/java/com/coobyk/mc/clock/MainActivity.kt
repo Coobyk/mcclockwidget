@@ -1,4 +1,4 @@
-package com.t3codes.mcclock
+package com.coobyk.mc.clock
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -8,8 +8,8 @@ import android.os.Looper
 import android.text.format.DateFormat
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.t3codes.mcclock.databinding.ActivityMainBinding
-import com.t3codes.mcclock.widget.ClockWidgetProvider
+import com.coobyk.mc.clock.databinding.ActivityMainBinding
+import com.coobyk.mc.clock.widget.ClockWidgetProvider
 import java.time.LocalDateTime
 import java.util.Locale
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_stone"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/silkscreen_bold"
+        android:shadowColor="#CC000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="0"
+        android:text="Alarms"
+        android:textColor="@color/app_text"
+        android:textSize="18sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/alarmsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/addAlarmButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/mc_button"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/silkscreen_bold"
+        android:gravity="center"
+        android:padding="14dp"
+        android:text="Add alarm"
+        android:textColor="@color/mc_text"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/exactAlarmHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/app_text_dim"
+        android:textSize="11sp" />
+</LinearLayout>

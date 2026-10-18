@@ -157,6 +157,62 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/alarmsButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/mc_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/silkscreen_bold"
+                android:gravity="center"
+                android:padding="14dp"
+                android:text="Alarms"
+                android:textColor="@color/mc_text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/timerButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/mc_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/silkscreen_bold"
+                android:gravity="center"
+                android:padding="14dp"
+                android:text="Timer"
+                android:textColor="@color/mc_text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/stopwatchButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/mc_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/silkscreen_bold"
+                android:gravity="center"
+                android:padding="14dp"
+                android:text="Stopwatch"
+                android:textColor="@color/mc_text"
+                android:textSize="13sp" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/addWidgetButton"
             android:layout_width="match_parent"

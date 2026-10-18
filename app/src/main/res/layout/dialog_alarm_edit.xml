@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:timePickerMode="spinner" />
+
+    <EditText
+        android:id="@+id/labelEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Label (optional)"
+        android:inputType="text"
+        android:textColor="@color/app_text"
+        android:textColorHint="@color/app_text_dim" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Repeat"
+        android:textColor="@color/app_text"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox android:id="@+id/d0" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Su" android:textColor="@color/app_text" />
+        <CheckBox android:id="@+id/d1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Mo" android:textColor="@color/app_text" />
+        <CheckBox android:id="@+id/d2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Tu" android:textColor="@color/app_text" />
+        <CheckBox android:id="@+id/d3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="We" android:textColor="@color/app_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox android:id="@+id/d4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Th" android:textColor="@color/app_text" />
+        <CheckBox android:id="@+id/d5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Fr" android:textColor="@color/app_text" />
+        <CheckBox android:id="@+id/d6" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sa" android:textColor="@color/app_text" />
+        <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Leave all unchecked for a one-time alarm."
+        android:textColor="@color/app_text_dim"
+        android:textSize="11sp" />
+</LinearLayout>

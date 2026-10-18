@@ -72,6 +72,19 @@ platform 35 and build-tools 35.0.0, then:
 `app/build/widget-renders/`, so a broken layout or a missing dial fails the build instead of only
 showing up on a phone.
 
+## The app
+
+The launcher activity is a full clock app in the same Minecraft style:
+
+* **Alarms** — multiple alarms with repeat days, labels, snooze (10 min) and
+  dismiss. Rings with the system alarm sound and vibration, even from the
+  background, via exact alarms.
+* **Timer** — countdown with hours/minutes/seconds, pause/resume/reset.
+* **Stopwatch** — count up with laps.
+
+All three open from the buttons on the main screen. The dial at the top is
+the same widget dial.
+
 ## Installing
 
 Download the APK from the [latest

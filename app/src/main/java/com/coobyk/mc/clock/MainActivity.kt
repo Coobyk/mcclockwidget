@@ -2,6 +2,7 @@ package com.coobyk.mc.clock
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -30,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.addWidgetButton.setOnClickListener { pinWidget() }
+        binding.alarmsButton.setOnClickListener { startActivity(Intent(this, AlarmsActivity::class.java)) }
+        binding.timerButton.setOnClickListener { startActivity(Intent(this, TimerActivity::class.java)) }
+        binding.stopwatchButton.setOnClickListener { startActivity(Intent(this, StopwatchActivity::class.java)) }
+        requestPermissionsIfNeeded()
     }
 
     override fun onResume() {
@@ -72,6 +77,15 @@ class MainActivity : AppCompatActivity() {
                 seconds,
                 if (now.hour < 12) "AM" else "PM",
             )
+        }
+    }
+
+    private fun requestPermissionsIfNeeded() {
+        NotificationHelper.ensureChannels(this)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1001)
+            }
         }
     }
 

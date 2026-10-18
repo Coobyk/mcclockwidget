@@ -1,100 +1,189 @@
 package com.coobyk.mc.clock
 
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import androidx.appcompat.app.AppCompatActivity
-import com.coobyk.mc.clock.databinding.ActivityTimerBinding
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.coobyk.mc.clock.ui.theme.AppBg
+import com.coobyk.mc.clock.ui.theme.AppSurface
+import com.coobyk.mc.clock.ui.theme.AppText
+import com.coobyk.mc.clock.ui.theme.AppTextDim
+import com.coobyk.mc.clock.ui.theme.McGreen
+import com.coobyk.mc.clock.ui.theme.McTheme
+import kotlinx.coroutines.delay
 
-class TimerActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityTimerBinding
-    private val handler = Handler(Looper.getMainLooper())
-    private val ticker = object : Runnable {
-        override fun run() {
-            refresh()
-            if (TimerState.isRunning(this@TimerActivity)) handler.postDelayed(this, 250L)
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+class TimerActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: android.os.Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTimerBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.startButton.setOnClickListener { start() }
-        binding.pauseButton.setOnClickListener { pause() }
-        binding.resetButton.setOnClickListener { reset() }
-        refresh()
-        if (TimerState.isRunning(this)) handler.postDelayed(ticker, 250L)
+        setContent { McTheme { TimerScreen(this) } }
     }
+}
 
-    override fun onPause() {
-        super.onPause()
-        handler.removeCallbacks(ticker)
-    }
+@Composable
+private fun TimerScreen(activity: TimerActivity) {
+    var remaining by remember { mutableStateOf(TimerState.remainingMs(activity)) }
+    var running by remember { mutableStateOf(TimerState.isRunning(activity)) }
+    var hasActive by remember { mutableStateOf(TimerState.endAt(activity) > 0L) }
+    var h by remember { mutableStateOf("0") }
+    var m by remember { mutableStateOf("5") }
+    var s by remember { mutableStateOf("0") }
 
-    override fun onResume() {
-        super.onResume()
-        refresh()
-        if (TimerState.isRunning(this)) handler.postDelayed(ticker, 250L)
-    }
-
-    private fun start() {
-        if (TimerState.isRunning(this)) return
-        val remaining = TimerState.remainingMs(this)
-        if (remaining > 0 && TimerState.endAt(this) > 0L) {
-            TimerState.resume(this)
-        } else {
-            val ms = parseInput()
-            if (ms <= 0) return
-            TimerState.start(this, ms)
+    LaunchedEffect(running) {
+        while (running) {
+            delay(250)
+            remaining = TimerState.remainingMs(activity)
+            running = TimerState.isRunning(activity)
+            hasActive = TimerState.endAt(activity) > 0L
+            if (!running) break
         }
-        AlarmScheduler.scheduleTimer(this, TimerState.endAt(this))
-        refresh()
-        handler.removeCallbacks(ticker)
-        handler.postDelayed(ticker, 250L)
     }
 
-    private fun parseInput(): Long {
-        val h = binding.hoursEdit.text.toString().toIntOrNull() ?: 0
-        val m = binding.minutesEdit.text.toString().toIntOrNull() ?: 0
-        val s = binding.secondsEdit.text.toString().toIntOrNull() ?: 0
-        return ((h * 3600L + m * 60L + s) * 1000L)
-    }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(AppBg)
+            .padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text("Timer", color = AppText, fontSize = 20.sp, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Monospace)
 
-    private fun pause() {
-        if (!TimerState.isRunning(this)) return
-        TimerState.pause(this)
-        AlarmScheduler.cancelTimer(this)
-        refresh()
-        handler.removeCallbacks(ticker)
-    }
+        Text(
+            text = formatMs(remaining),
+            color = AppText,
+            fontSize = 52.sp,
+            fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily.Monospace,
+            modifier = Modifier.padding(top = 32.dp),
+        )
 
-    private fun reset() {
-        TimerState.reset(this)
-        AlarmScheduler.cancelTimer(this)
-        binding.hoursEdit.setText("0")
-        binding.minutesEdit.setText("5")
-        binding.secondsEdit.setText("0")
-        refresh()
-        handler.removeCallbacks(ticker)
-    }
+        if (!running && !hasActive) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 32.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                TimeField(h, { h = it }, "h", Modifier.weight(1f))
+                TimeField(m, { m = it }, "m", Modifier.weight(1f))
+                TimeField(s, { s = it }, "s", Modifier.weight(1f))
+            }
+        }
 
-    private fun refresh() {
-        val remaining = TimerState.remainingMs(this)
-        binding.remainingText.text = formatMs(remaining)
-        val running = TimerState.isRunning(this)
-        val hasActive = TimerState.endAt(this) > 0L
-        binding.startButton.text = if (running) "Running" else if (remaining > 0) "Resume" else "Start"
-        binding.startButton.isClickable = !running
-        binding.inputRow.visibility = if (running || hasActive) android.view.View.GONE else android.view.View.VISIBLE
-        binding.pauseButton.isEnabled = running
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 24.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Button(
+                onClick = {
+                    if (running) return@Button
+                    val rem = TimerState.remainingMs(activity)
+                    if (rem > 0 && TimerState.endAt(activity) > 0L) {
+                        TimerState.resume(activity)
+                    } else {
+                        val ms = (h.toIntOrNull() ?: 0) * 3600000L +
+                            (m.toIntOrNull() ?: 0) * 60000L +
+                            (s.toIntOrNull() ?: 0) * 1000L
+                        if (ms <= 0) return@Button
+                        TimerState.start(activity, ms)
+                    }
+                    AlarmScheduler.scheduleTimer(activity, TimerState.endAt(activity))
+                    running = true
+                    hasActive = true
+                    remaining = TimerState.remainingMs(activity)
+                },
+                modifier = Modifier.weight(1f),
+                colors = ButtonDefaults.buttonColors(containerColor = McGreen, contentColor = AppText),
+                shape = RoundedCornerShape(8.dp),
+                enabled = !running,
+            ) {
+                Text(if (running) "Running" else if (remaining > 0 && hasActive) "Resume" else "Start", fontWeight = FontWeight.Bold, fontFamily = FontFamily.Monospace, fontSize = 13.sp)
+            }
+            Button(
+                onClick = {
+                    if (!running) return@Button
+                    TimerState.pause(activity)
+                    AlarmScheduler.cancelTimer(activity)
+                    running = false
+                    remaining = TimerState.remainingMs(activity)
+                },
+                modifier = Modifier.weight(1f),
+                colors = ButtonDefaults.buttonColors(containerColor = AppSurface, contentColor = AppText),
+                shape = RoundedCornerShape(8.dp),
+                enabled = running,
+            ) {
+                Text("Pause", fontWeight = FontWeight.Bold, fontFamily = FontFamily.Monospace, fontSize = 13.sp)
+            }
+            Button(
+                onClick = {
+                    TimerState.reset(activity)
+                    AlarmScheduler.cancelTimer(activity)
+                    running = false
+                    hasActive = false
+                    remaining = 0L
+                    h = "0"; m = "5"; s = "0"
+                },
+                modifier = Modifier.weight(1f),
+                colors = ButtonDefaults.buttonColors(containerColor = AppSurface, contentColor = AppText),
+                shape = RoundedCornerShape(8.dp),
+            ) {
+                Text("Reset", fontWeight = FontWeight.Bold, fontFamily = FontFamily.Monospace, fontSize = 13.sp)
+            }
+        }
     }
+}
 
-    private fun formatMs(ms: Long): String {
-        val totalSec = (ms / 1000).toInt()
-        val h = totalSec / 3600
-        val m = (totalSec % 3600) / 60
-        val s = totalSec % 60
-        return String.format(java.util.Locale.US, "%02d:%02d:%02d", h, m, s)
-    }
+@Composable
+private fun TimeField(value: String, onChange: (String) -> Unit, hint: String, modifier: Modifier) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = { onChange(it.filter { c -> c.isDigit() }.take(2)) },
+        modifier = modifier,
+        placeholder = { Text(hint, color = AppTextDim) },
+        singleLine = true,
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedContainerColor = AppSurface,
+            unfocusedContainerColor = AppSurface,
+            focusedTextColor = AppText,
+            unfocusedTextColor = AppText,
+            focusedBorderColor = McGreen,
+            unfocusedBorderColor = AppTextDim,
+        ),
+    )
+}
+
+private fun formatMs(ms: Long): String {
+    val totalSec = (ms / 1000).toInt()
+    val h = totalSec / 3600
+    val m = (totalSec % 3600) / 60
+    val s = totalSec % 60
+    return String.format(java.util.Locale.US, "%02d:%02d:%02d", h, m, s)
 }

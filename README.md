@@ -78,7 +78,7 @@ Download the APK from the [latest
 release](https://github.com/Coobyk/mcclockwidget/releases/latest):
 
 ```sh
-adb install mcclockwidget-1.0.0.apk
+adb install mcclockwidget-2.0.0.apk
 ```
 
 Or build one yourself with `./gradlew :app:assembleDebug` and install
@@ -123,6 +123,11 @@ stored in the repository's Actions secrets:
 release can be installed over an existing one. Without those four environment variables
 `./gradlew :app:assembleRelease` still builds — it just leaves the APK unsigned, as
 `app-release-unsigned.apk`.
+
+## License
+
+The code is MIT — see [`LICENSE`](LICENSE). That covers the Android sources, not the artwork: the
+64 dial frames are Mojang's Minecraft assets and stay theirs.
 
 ## Credits
 
